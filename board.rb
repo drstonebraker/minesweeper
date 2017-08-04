@@ -10,9 +10,9 @@ class Board
   def render
     ending_letter = num_to_letter(@dimensions[1])
 
-    puts "  #{('A'...ending_letter).to_a.join(' ')}"
+    puts "   #{('A'...ending_letter).to_a.join(' ')}"
     @grid.each_with_index do |row, idx|
-      puts "#{num_to_letter(idx)} #{row.join(' '.on_light_white)}"
+      puts "#{num_to_letter(idx)} #{" #{row.join(' ')} ".on_light_white}"
     end
   end
 

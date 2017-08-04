@@ -5,7 +5,8 @@ class Tile
               :status # :untouched || :flagged || :revealed
 
   def initialize
-    @status = :untouched # :untouched || :flagged || :revealed
+    # @status = :untouched # :untouched || :flagged || :revealed
+    @status = :revealed # :untouched || :flagged || :revealed
     @value = ' '.on_light_white
   end
 
@@ -13,9 +14,18 @@ class Tile
     if @status == :revealed
       @value
     elsif @status == :flagged
-      'F'.red.on_light_white
+      MinesweeperGame::FLAG
     else # @status == :untouched
       '*'.on_light_white
     end
+  end
+
+  def reveal!
+
+  end
+
+  def colorize_num!(num_str)
+    # case num_str.uncolorize.
+
   end
 end

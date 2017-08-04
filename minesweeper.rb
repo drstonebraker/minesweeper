@@ -1,8 +1,12 @@
 require 'colorize'
 require_relative 'board'
 
+
 class MinesweeperGame
-  # attr_reader :board
+  attr_reader :board
+  EXPLOSION = '💥'.on_light_white
+  BOMB = '💣'.on_light_white
+  FLAG = '🚩'.on_light_white
 
   def initialize(options = {})
     default = { board: Board.new, bomb_count: 10 }
@@ -14,17 +18,16 @@ class MinesweeperGame
   def populate_bombs
     @bomb_coordinates = @board.list_of_coordinates.sample(@bomb_count)
     @bomb_coordinates.each do |pos|
-      @board[pos].value = '@'.black.on_red
+      @board[pos].value = BOMB
     end
   end
 
   def populate_numbers
     @bomb_coordinates.each do |bomb_pos|
-      p bomb_pos
       adjacent_coordinates(bomb_pos).each do |adj_pos|
         value = @board[adj_pos].value # is either @ or ' ' or digit string
 
-        @board[adj_pos].value = (value.uncolorize.to_i + 1).to_s.on_light_white unless value == '@'.black.on_red
+        @board[adj_pos].value = (value.uncolorize.to_i + 1).to_s.on_light_white unless value == BOMB
       end
     end
   end
@@ -50,7 +53,6 @@ class MinesweeperGame
   end
 
   def play_turn
-
     get_coordinate
   end
 
@@ -58,7 +60,7 @@ class MinesweeperGame
 
   def get_coordinate
     puts 'Please enter coordinates (e.g. I,A for top-right)'
-    input = gets.chomp.split(/\,?\s*/).reverse
+    gets.chomp.split(/\,?\s*/).reverse
   end
 
   def game_over?
