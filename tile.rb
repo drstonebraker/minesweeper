@@ -1,7 +1,7 @@
 require 'colorize'
 
 class Tile
-  attr_writer :value, # value is either '@' or ' ' or a number
+  attr_accessor :value, # value is either '@' or ' ' or a number
               :status # :untouched || :flagged || :revealed
 
   def initialize
