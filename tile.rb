@@ -23,9 +23,4 @@ class Tile
   def reveal!
 
   end
-
-  def colorize_num!(num_str)
-    # case num_str.uncolorize.
-
-  end
 end

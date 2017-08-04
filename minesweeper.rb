@@ -27,7 +27,7 @@ class MinesweeperGame
       adjacent_coordinates(bomb_pos).each do |adj_pos|
         value = @board[adj_pos].value # is either @ or ' ' or digit string
 
-        @board[adj_pos].value = (value.uncolorize.to_i + 1).to_s unless value == BOMB
+        @board[adj_pos].value = colorize_num(value.uncolorize.to_i + 1).bold unless value == BOMB
       end
     end
   end
@@ -64,6 +64,20 @@ class MinesweeperGame
   end
 
   def game_over?
+  end
+
+  def colorize_num(num)
+    case num
+    when 1 then num.to_s.light_blue
+    when 2 then num.to_s.green
+    when 3 then num.to_s.light_red
+    when 4 then num.to_s.blue
+    when 5 then num.to_s.red
+    when 6 then num.to_s.cyan
+    when 7 then num.to_s.black
+    when 8 then num.to_s.light_black
+    else num.to_s
+    end
   end
 end
 
