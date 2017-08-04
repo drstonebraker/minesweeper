@@ -7,7 +7,7 @@ class Tile
   def initialize
     # @status = :untouched # :untouched || :flagged || :revealed
     @status = :revealed # :untouched || :flagged || :revealed
-    @value = ' '.on_light_white
+    @value = ' '
   end
 
   def to_s
@@ -16,7 +16,7 @@ class Tile
     elsif @status == :flagged
       MinesweeperGame::FLAG
     else # @status == :untouched
-      '*'.on_light_white
+      '*'
     end
   end
 

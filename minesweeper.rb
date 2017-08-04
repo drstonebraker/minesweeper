@@ -4,9 +4,9 @@ require_relative 'board'
 
 class MinesweeperGame
   attr_reader :board
-  EXPLOSION = '💥'.on_light_white
-  BOMB = '💣'.on_light_white
-  FLAG = '🚩'.on_light_white
+  EXPLOSION = '💥'
+  BOMB = '💣'
+  FLAG = '🚩'
 
   def initialize(options = {})
     default = { board: Board.new, bomb_count: 10 }
@@ -27,7 +27,7 @@ class MinesweeperGame
       adjacent_coordinates(bomb_pos).each do |adj_pos|
         value = @board[adj_pos].value # is either @ or ' ' or digit string
 
-        @board[adj_pos].value = (value.uncolorize.to_i + 1).to_s.on_light_white unless value == BOMB
+        @board[adj_pos].value = (value.uncolorize.to_i + 1).to_s unless value == BOMB
       end
     end
   end
