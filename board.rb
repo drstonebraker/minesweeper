@@ -30,6 +30,7 @@ class Board
 
   def [](pos)
     row, col = pos
+    return nil unless @grid[row]
     @grid[row][col]
   end
 
@@ -41,5 +42,5 @@ end
 
 if __FILE__ == $0
   b = Board.new
-  p b.list_of_coordinates
+  b.render
 end
